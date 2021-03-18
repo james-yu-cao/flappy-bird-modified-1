@@ -9,7 +9,7 @@
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
-    let verticalPipeGap = 150.0
+    let verticalPipeGap = 200.0
     
     var bird:SKSpriteNode!
     var skyColor:SKColor!
@@ -32,7 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         canRestart = true
         
         // setup physics
-        self.physicsWorld.gravity = CGVector( dx: 0.0, dy: -5.0 )
+        self.physicsWorld.gravity = CGVector( dx: 0.0, dy: -2.0 )
         self.physicsWorld.contactDelegate = self
         
         // setup background color
@@ -208,7 +208,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         if moving.speed > 0  {
             for _ in touches { // do we need all touches?
                 bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-                bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 30))
+                bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10))
             }
         } else if canRestart {
             self.resetScene()
